@@ -46,7 +46,7 @@ def recipe_list(request):
                     },
                     {
                         "name": "water",
-                        "quanity": "1 cup"
+                        "quantity": "1 cup"
                     },
                     {
                         "name": "salt",
