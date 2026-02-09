@@ -9,7 +9,7 @@
                 <li>Ingredients</li>
                     <ul>
                         {% for ingredient in recipe.ingredients %}
-                            <li>{{ingredient.name}}: {{ingredient.quantity}}</li>
+                            <li>{{ingredient.quantity}} {{ingredient.name}}</li>
                         {% endfor %}
                     </ul>
                 </ul>
