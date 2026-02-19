@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <h2> {{name}} </h2>
+    <h2> {{recipe.name}} </h2>
     <h3> Ingredients </h3>
     <ul>
-        {% for ingredient in ingredients%}
-            <li>{{ingredient.quantity}} {{ingredient.name}}</li>
+        {% for recipe_ingredient in recipe.recipe_ingredients.all %}
+            <li>{{recipe_ingredient.quantity}} {{recipe_ingredient.ingredient.name}}</li>
         {% endfor %}
     </ul>
 
-    <p><a href={{link}}> link </a></p>
+    <p><a href='/recipes/list'> link </a></p>
 
 {% endblock %}
