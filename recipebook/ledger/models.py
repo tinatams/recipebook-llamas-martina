@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-class Ingredient(models.Model): 
+class Ingredient(models.Model):
     name = models.CharField(max_length=50)
 
     def __str__(self):
@@ -24,7 +24,7 @@ class RecipeIngredient(models.Model):
     ingredient = models.ForeignKey(
         Ingredient,
         on_delete=models.CASCADE,
-        related_name='recipes'
+        related_name='recipe'
     )
 
     recipe = models.ForeignKey(
