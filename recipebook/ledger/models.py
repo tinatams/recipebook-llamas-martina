@@ -6,7 +6,7 @@ from django.urls import reverse
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    shortBio = models.TextField(blank=True)
+    shortBio = models.TextField()
 
     def __str__(self):
         return self.name
@@ -24,7 +24,9 @@ class Ingredient(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=50)
-    author = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="author")
+    author = models.ForeignKey(
+        Profile, on_delete=models.CASCADE, related_name="recipes"
+    )
     createdOn = models.DateTimeField(auto_now_add=True)
     updatedOn = models.DateTimeField(auto_now=True)
 

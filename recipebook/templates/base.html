@@ -17,7 +17,6 @@
         </form>
     {% else %}
         <a href="{% url 'login' %}"> Login </a> <br>
-        <a href="{% url 'password_reset' %}"> Reset Password </a>
     {% endif %}
     {% block body %}{% endblock %}  
     {% block script %}{% endblock %}
