@@ -4,15 +4,7 @@
     <h2> Recipes: </h2>
     <ul>
         {% for recipe in recipes %}
-            <li><a href= {{recipe.link}}> {{ recipe.name }}</a></li>
-            <ul>
-                <li>Ingredients</li>
-                    <ul>
-                        {% for ingredient in recipe.ingredients %}
-                            <li>{{ingredient.quantity}} {{ingredient.name}}</li>
-                        {% endfor %}
-                    </ul>
-                </ul>
+            <li><a href={{recipe.get_absolute_url}}> {{recipe.name}}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}
