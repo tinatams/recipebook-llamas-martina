@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h2>Add A Recipe</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="name">Recipe Name:</label>
+        <input type="text" id="name" name="name" maxlength="50" required>
+
+        <label for="author">Author:</label>
+        <select id="author" name="author" required>
+            {% for profile in profiles %}
+                <option value="{{ profile.id }}">{{ profile.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" name="submit" value="Save Form">
+    </form>
+    
+    <p><a href='/recipes/list'> back to list </a></p>
+{% endblock %}
