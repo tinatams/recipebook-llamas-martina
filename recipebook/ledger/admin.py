@@ -4,10 +4,11 @@ from django.contrib.auth.models import User
 
 from .models import Profile, Recipe, RecipeIngredient, RecipeImage
 
+
 class RecipeImageInline(admin.StackedInline):
     model = RecipeImage
 
-    
+
 class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False
