@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block body %}
     <h2> Recipe Detail Page </h2>
+    {% for image in recipe.images.all %}
+        <img src="{{ image.image.url }}" alt="{{ image.description }}" style="width: 300px;">
+    {% endfor %}
     <h3> {{recipe.name}} by {{recipe.author}}</h3>
     <h4> Ingredients </h4>
     <ul>
@@ -10,6 +14,7 @@
         {% endfor %}
     </ul>
 
+    <p><a href='{{recipe.get_absolute_url}}add_image'> add image </a></p>
     <p><a href='/recipes/list'> back to list </a></p>
 
 {% endblock %}
