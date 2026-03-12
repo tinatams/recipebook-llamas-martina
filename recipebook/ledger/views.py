@@ -21,23 +21,25 @@ def recipe_detail(request, pk):
 
     return render(request, "recipe.html", context)
 
-@login_required
-def recipe_add(request):
-    form = RecipeForm()
-    if request.method == "POST":
-        form = RecipeForm(request.POST)
-        if form.is_valid():
-            recipe = Recipe()
-            recipe.name = form.cleaned_data.get('name')
-            recipe.author = form.cleaned_data.get('author')
-            recipe.save()
 
-    context = { "form" : form, "profiles" : Profile.objects.all}
+class RecipeAdd(LoginRequiredMixin, CreateView):
+    model = Recipe
+    form_class = RecipeForm
+    template_name = "recipe_add.html"
+    success_url = "/recipes/list"
 
-    return render(request, "recipe_add.html", context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["profiles"] = Profile.objects.all()
+        context["form"] = RecipeForm()
+        return context
+    
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
 
-class recipe_add_image(LoginRequiredMixin, CreateView):
+class RecipeAddImage(LoginRequiredMixin, CreateView):
     model = RecipeImage
     form_class = RecipeAddImageForm
     template_name = "recipe_add_image.html"
